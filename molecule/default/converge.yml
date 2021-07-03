@@ -1,0 +1,16 @@
+---
+- name: Converge
+  hosts: master
+  become: yes
+  tasks:
+    - name: "Include hadoop_deploy"
+      include_role:
+        name: "hadoop_deploy"
+
+- name: Converge
+  hosts: worker
+  become: yes
+  tasks:
+    - name: "Include worker task"
+      include_tasks:
+        file: ../../tasks/worker.yml
